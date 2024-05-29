@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zuifitfor
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: GSS4C_my407395
+          url: https://my407395-api.s4hana.cloud.sap
+        app:
+          name: ZUI_FITFOR
+          description: FitFor Mappings
+          package: ZEX_S3_NEO
+          transport: ZGGK900161
+        exclude:
+          - /test/
